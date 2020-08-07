@@ -1,5 +1,6 @@
 #include "mandelbrot.hpp"
 #include <math.h>
+#include <iostream>
 
 Mandelbrot::Mandelbrot(int length, int height)
     : length(length), height(height), minx(base_minx), maxx(base_maxx), miny(base_miny), maxy(base_maxy)
@@ -10,15 +11,23 @@ Mandelbrot::~Mandelbrot() {}
 void Mandelbrot::zoomIn(int x, int y)
 {
     float pointx, pointy;
+    // std::cout << " x :" << x << " y : " << y << std::endl;
     // passer dans le repere du plan dans lequel on travail
+
+    // std::cout << "minx :" << minx << " maxx : " << maxx << " miny : " << miny << " maxy : " << maxy << std::endl;
+
     pointx = (x / (float)length) * (maxx - minx) + minx;
     pointy = (y / (float)height) * (maxy - miny) + miny;
 
-    minx = pointx + abs(minx / zoomStrength);
-    maxx = pointx - abs(maxx / zoomStrength);
+    // std::cout << "Dans le repere,x : " << pointx << " y : " << pointy << std::endl;
 
-    miny = pointy + abs(miny / zoomStrength);
-    maxy = pointy - abs(maxy / zoomStrength);
+    minx += (pointx - minx) / zoomStrength;
+    maxx -= (maxx - pointx) / zoomStrength;
+
+    miny += (pointy - miny) / zoomStrength;
+    maxy -= (maxy - pointy) / zoomStrength;
+
+    // std::cout << "minx :" << minx << " maxx : " << maxx << " miny : " << miny << " maxy : " << maxy << std::endl;
 
     zoomState++;
 }
@@ -38,14 +47,15 @@ void Mandelbrot::zoomOut(int x, int y)
     {
         zoomState--;
         float pointx, pointy;
+
         pointx = (x / (float)length) * (maxx - minx) + minx;
         pointy = (y / (float)height) * (maxy - miny) + miny;
 
-        minx = pointx - abs(minx / zoomStrength);
-        maxx = pointx + abs(maxx / zoomStrength);
+        minx -= (pointx - minx) / zoomStrength;
+        maxx += (maxx - pointx) / zoomStrength;
 
-        miny = pointy - abs(miny / zoomStrength);
-        maxy = pointy + abs(maxy / zoomStrength);
+        miny -= (pointy - miny) / zoomStrength;
+        maxy += (maxy - pointy) / zoomStrength;
     }
 }
 

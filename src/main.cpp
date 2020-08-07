@@ -38,9 +38,9 @@ void loop(Window &w, Mandelbrot &m)
             else if (e.type == SDL_MOUSEBUTTONDOWN)
             {
                 int x, y;
-                // SDL_GetMouseState(&x, &y);
+                SDL_GetMouseState(&x, &y);
                 // SDL_GetGlobalMouseState(&x, &y);
-                SDL_GetRelativeMouseState(&x, &y);
+                // SDL_GetRelativeMouseState(&x, &y);
 
                 if (e.button.button == SDL_BUTTON_LEFT)
                 {

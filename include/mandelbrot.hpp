@@ -16,7 +16,7 @@ private:
     float miny;
     float maxy;
 
-    float zoomStrength = 1.1f;
+    float zoomStrength = 2.f;
     int zoomState = 0;
 
     int length;
