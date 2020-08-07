@@ -4,25 +4,25 @@
 class Mandelbrot
 {
 private:
-    float base_minx = -2.4f;
-    float base_maxx = 1.f;
+    double base_minx = -2.4f;
+    double base_maxx = 1.f;
 
-    float base_miny = -1.f;
-    float base_maxy = 1.f;
+    double base_miny = -1.f;
+    double base_maxy = 1.f;
 
-    float minx;
-    float maxx;
+    double minx;
+    double maxx;
 
-    float miny;
-    float maxy;
+    double miny;
+    double maxy;
 
-    float zoomStrength = 2.f;
+    double zoomStrength = 2.f;
     int zoomState = 0;
 
     int length;
     int height;
 
-    int nb_ite = 100;
+    int nb_ite = 300;
 
 public:
     Mandelbrot(int length, int height);
@@ -30,7 +30,7 @@ public:
 
     void zoomIn(int, int);
     void zoomOut(int, int);
-    float mandelbrot(int, int) const;
+    double mandelbrot(int, int) const;
 
     int getIteration() const;
     void setIteration(int);
