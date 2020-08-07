@@ -1,7 +1,7 @@
 #ifndef COLOR
 #define COLOR
 
-#include <math.h>
+#include <cmath>
 /***
  * Not my code, picked it on stackoverflow.
  **/

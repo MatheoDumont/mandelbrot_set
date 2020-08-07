@@ -1,5 +1,5 @@
 #include "mandelbrot.hpp"
-#include <math.h>
+#include <cmath>
 #include <iostream>
 
 Mandelbrot::Mandelbrot(int length, int height)
