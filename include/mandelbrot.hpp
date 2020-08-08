@@ -22,7 +22,7 @@ private:
     int length;
     int height;
 
-    int nb_ite = 300;
+    int nb_ite = 100    ;
 
 public:
     Mandelbrot(int length, int height);
