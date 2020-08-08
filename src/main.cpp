@@ -1,21 +1,10 @@
 #define SDL_MAIN_HANDLED
-#include "mandelbrot.hpp"
-#include "window.hpp"
 
-#include <iostream>
-#include <stdlib.h>
-#include <math.h>
 #include <unistd.h>
-
 #include <SDL2/SDL.h>
 
-void test()
-{
-    // SDL_version v;
-    // SDL_VERSION(&v);
-
-    // std::cout << unsigned(v.major) << "." << unsigned(v.minor) << "." << unsigned(v.patch) << std::endl;
-}
+#include "mandelbrot.hpp"
+#include "window.hpp"
 
 void loop(Window &w, Mandelbrot &m)
 {
@@ -27,14 +16,8 @@ void loop(Window &w, Mandelbrot &m)
     {
         while (SDL_PollEvent(&e))
         {
-            if (e.type == SDL_QUIT)
-            {
+            if (e.type == SDL_QUIT || e.type == SDL_KEYDOWN)
                 leave = true;
-            }
-            else if (e.type == SDL_KEYDOWN)
-            {
-                leave = true;
-            }
             else if (e.type == SDL_MOUSEBUTTONDOWN)
             {
                 int x, y;
@@ -80,7 +63,7 @@ void linear_print(Window &w, Mandelbrot &m)
 int main(int argc, char *argv[])
 {
     Window w;
-    Mandelbrot m = Mandelbrot(w.getLength(), w.getHeight());
+    Mandelbrot m(w.getLength(), w.getHeight());
 
     // linear_print(w, m);
     loop(w, m);

@@ -13,7 +13,6 @@ find_package(SDL2 REQUIRED)
 
 include_directories(
     include
-    ${SDL2_INCLUDE_DIRS}
     # ${OpenCV_INCLUDE_DIRS}
     # ${Boost_INCLUDE_DIRS}
     )
@@ -32,7 +31,7 @@ add_executable(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    ${SDL2_LIBRARIES}
+    SDL2::SDL2
     # ${OpenCV_LIBS}
     # ${Boost_LIBS}
     )

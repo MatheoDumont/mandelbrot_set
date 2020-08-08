@@ -10,14 +10,14 @@ Window::Window(/* args */)
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
-        std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_Init Error: " << SDL_GetError() << std::endl;
         // return 1;
     }
 
     this->win = SDL_CreateWindow("Hello World!", 100, 100, length, height, SDL_WINDOW_SHOWN);
     if (win == nullptr)
     {
-        std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
         // return 1;
     }
@@ -26,7 +26,7 @@ Window::Window(/* args */)
     if (ren == nullptr)
     {
         SDL_DestroyWindow(this->win);
-        std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+        std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
         // return 1;
     }
